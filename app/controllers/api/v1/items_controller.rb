@@ -1,4 +1,4 @@
-class ItemsController < ApplicationController
+class Api::V1::ItemsController < ApplicationController
   before_action :set_item, only: %i[ show update destroy ]
 
   # GET /items
@@ -36,6 +36,7 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   def destroy
     @item.destroy
+    render json: { item: @item, message: "Item deleted." }
   end
 
   private

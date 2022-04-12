@@ -18,6 +18,8 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'jwt'
 
+gem 'dotenv-rails', groups: %i[development test]
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 # gem "jbuilder"
 
