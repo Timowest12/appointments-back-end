@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::API
-    protect_from_forgery with: :null_session
+  protect_from_forgery with: :null_session
 
-    before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :configure_permitted_parameters, if: :devise_controller?
 
-    protected
+  protected
 
-    def configure_permitted_parameters
-        devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :password, :password_confirmation])
-        devise_parameter_sanitizer.permit(:sign_in, keys: [:email, :password])
-        devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :password])
-    end
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[name email password password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email password])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[name email password])
+  end
 end

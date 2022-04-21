@@ -39,17 +39,18 @@ class Api::V1::ReservationsController < ApplicationController
   def destroy
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
-    render json: { reservation: @reservation, message: "Reservation deleted." }
+    render json: { reservation: @reservation, message: 'Reservation deleted.' }
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_reservation
-      @reservation = Reservation.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def reservation_params
-      params.require(:reservation).permit(:start_time, :end_time, :item_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_reservation
+    @reservation = Reservation.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def reservation_params
+    params.require(:reservation).permit(:start_time, :end_time, :item_id)
+  end
 end
